@@ -27,6 +27,8 @@ namespace cle_summer_2020_courses
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddDbContext<UniversityContext>();
+
             services.AddScoped<IRepository<Course>, CourseRepository>();
 
         }

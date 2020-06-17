@@ -13,7 +13,7 @@ namespace cle_summer_2020_courses
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionString = "Server=(localdb)\\mssqllocaldb;Database=UniversityDB_062019;Trusted_Connection=True;";
+            var connectionString = "Server=(localdb)\\mssqllocaldb;Database=UniversityDB_062020;Trusted_Connection=True;";
 
             optionsBuilder.UseSqlServer(connectionString);
 

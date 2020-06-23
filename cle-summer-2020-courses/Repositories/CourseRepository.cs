@@ -14,10 +14,17 @@ namespace cle_summer_2020_courses.Repositories
             this.db = db;
         }
 
+        public void Create(Course course)
+        {
+            db.Courses.Add(course);
+            db.SaveChanges();
+        }
+
         public IEnumerable<Course> GetAll()
         {
             return db.Courses;
         }
+
         public Course GetById(int id)
         {
             return db.Courses.Single(c => c.Id == id);

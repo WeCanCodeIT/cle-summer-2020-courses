@@ -50,13 +50,51 @@ namespace cle_summer_2020_courses.Tests
         [Fact]
         public void Details_Passes_Course_To_View()
         {
-            // Arrange with Mocking and NSubstitute
+            // Arrange includes Mocking and NSubstitute
             var expectedCourse = new Course();
             courseRepo.GetById(1).Returns(expectedCourse);
 
             var result = underTest.Details(1);
             
             Assert.Equal(expectedCourse, result.Model);
+        }
+
+        [Fact]
+        public void Create_Returns_a_ViewResult()
+        {
+            var result = underTest.Create();
+
+            Assert.IsType<ViewResult>(result);
+        }
+
+        [Fact]
+        public void Create_Post_Returns_ActionResult()
+        {
+            var result = underTest.Create(new Course());
+
+            Assert.IsAssignableFrom<ActionResult>(result);
+        }
+
+        [Fact]
+        public void Create_Will_Not_Execute_if_Invalid_ModelState()
+        {
+            underTest.ModelState.AddModelError("Name", "Name is required");
+            var newCourse = new Course();
+
+            underTest.Create(newCourse);
+
+            courseRepo.DidNotReceive().Create(newCourse);
+        }
+
+        [Fact]
+        public void Create_Will_Add_Course_if_Valid_ModelState()
+        {
+            var newCourse = new Course();
+
+            underTest.Create(newCourse);
+
+            courseRepo.Received().Create(newCourse);
+
         }
 
     }

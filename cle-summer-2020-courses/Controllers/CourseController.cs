@@ -47,7 +47,13 @@ namespace cle_summer_2020_courses.Controllers
                 return RedirectToAction("Index");
             }
             return View(course);
+        }
 
+        [HttpGet]
+        public ViewResult CreateByInstructorId(int id)
+        {
+            ViewBag.InstructorId = id;
+            return View();
         }
     }
 }

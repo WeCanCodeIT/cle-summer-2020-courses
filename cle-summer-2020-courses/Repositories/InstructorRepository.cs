@@ -31,6 +31,9 @@ namespace cle_summer_2020_courses.Repositories
             return db.Instructors.Single(c => c.Id == id);
         }
 
-
+        public void Update(Instructor obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

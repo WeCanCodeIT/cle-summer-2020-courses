@@ -55,5 +55,26 @@ namespace cle_summer_2020_courses.Controllers
             ViewBag.InstructorId = id;
             return View();
         }
+
+        [HttpGet]
+        public ViewResult Update(int id)
+        {
+            Course model = courseRepo.GetById(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Update(Course course)
+        {
+            if (ModelState.IsValid)
+            {
+                courseRepo.Update(course);
+
+                return RedirectToAction("Details", "Course", new { id = course.Id });
+
+            }
+            return View();
+        }
+
     }
 }

@@ -29,5 +29,11 @@ namespace cle_summer_2020_courses.Repositories
         {
             return db.Courses.Single(c => c.Id == id);
         }
+
+        public void Update(Course course)
+        {
+            db.Courses.Update(course);
+            db.SaveChanges();
+        }
     }
 }

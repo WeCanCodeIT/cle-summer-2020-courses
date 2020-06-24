@@ -11,7 +11,7 @@ namespace cle_summer_2020_courses.Repositories
         T GetById(int id);
         void Create(T obj);
         //void Delete(T obj);
-        //void Update(T obj);
+        void Update(T obj);
 
     }
 }

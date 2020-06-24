@@ -35,5 +35,12 @@ namespace cle_summer_2020_courses.Repositories
             db.Courses.Update(course);
             db.SaveChanges();
         }
+
+        public void Delete(Course course)
+        {
+            db.Courses.Remove(course);
+            db.SaveChanges();
+        }
+
     }
 }

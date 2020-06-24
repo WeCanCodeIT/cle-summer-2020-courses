@@ -21,6 +21,11 @@ namespace cle_summer_2020_courses.Repositories
             db.SaveChanges();
         }
 
+        public void Delete(Instructor obj)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Instructor> GetAll()
         {
             return db.Instructors.ToList();

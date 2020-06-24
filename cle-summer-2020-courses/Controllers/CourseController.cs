@@ -76,5 +76,21 @@ namespace cle_summer_2020_courses.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ViewResult Delete(int id)
+        {
+            Course model = courseRepo.GetById(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(Course course)
+        {
+            courseRepo.Delete(course);
+
+            return RedirectToAction("Index");
+        }
+
     }
 }

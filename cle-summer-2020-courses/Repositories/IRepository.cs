@@ -12,6 +12,6 @@ namespace cle_summer_2020_courses.Repositories
         void Create(T obj);
         void Delete(T obj);
         void Update(T obj);
-
+        //bool IsStudentAlreadyEnrolled(int courseId, int studentId);
     }
 }

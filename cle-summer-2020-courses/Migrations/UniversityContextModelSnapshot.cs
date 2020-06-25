@@ -26,14 +26,12 @@ namespace cle_summer_2020_courses.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("InstructorId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -46,21 +44,21 @@ namespace cle_summer_2020_courses.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "Machine",
+                            Description = "Machine learning for humans",
                             InstructorId = 1,
                             Name = "Machine Learning"
                         },
                         new
                         {
                             Id = 2,
-                            Description = "It's all",
+                            Description = "It's all you need to learn it all",
                             InstructorId = 2,
                             Name = "C# for Smarties"
                         },
                         new
                         {
                             Id = 3,
-                            Description = "OMG",
+                            Description = "OMG, the front end will become your BFF",
                             InstructorId = 2,
                             Name = "HTML, CSS, JS, oh my!"
                         });
@@ -93,118 +91,11 @@ namespace cle_summer_2020_courses.Migrations
                         });
                 });
 
-            modelBuilder.Entity("cle_summer_2020_courses.Models.Student", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Students");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Ferris Bueller"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Cameron Frye"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Sloane Peterson"
-                        });
-                });
-
-            modelBuilder.Entity("cle_summer_2020_courses.Models.StudentCourse", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CourseId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StudentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CourseId");
-
-                    b.HasIndex("StudentId");
-
-                    b.ToTable("StudentCourses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CourseId = 1,
-                            StudentId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CourseId = 1,
-                            StudentId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CourseId = 2,
-                            StudentId = 2
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CourseId = 2,
-                            StudentId = 3
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CourseId = 3,
-                            StudentId = 1
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CourseId = 3,
-                            StudentId = 3
-                        });
-                });
-
             modelBuilder.Entity("cle_summer_2020_courses.Models.Course", b =>
                 {
                     b.HasOne("cle_summer_2020_courses.Models.Instructor", "Instructor")
                         .WithMany("Courses")
                         .HasForeignKey("InstructorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("cle_summer_2020_courses.Models.StudentCourse", b =>
-                {
-                    b.HasOne("cle_summer_2020_courses.Models.Course", "Course")
-                        .WithMany("StudentCourses")
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("cle_summer_2020_courses.Models.Student", "Student")
-                        .WithMany("StudentCourses")
-                        .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

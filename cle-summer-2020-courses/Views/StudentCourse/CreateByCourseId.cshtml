@@ -1,0 +1,49 @@
+﻿@model cle_summer_2020_courses.Models.StudentCourse
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateByCourseId</title>
+</head>
+<body>
+
+    <h4>StudentCourse</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="StudentId" class="control-label"></label>
+                    @*<select asp-for="StudentId" class="form-control" asp-items="ViewBag.StudentId"></select>*@
+                    <select asp-for="StudentId">
+                        <option value="1">Ferris Bueller</option>
+                        <option value="2">Cameron Frye</option>
+                        <option value="3">Sloane Peterson</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CourseId" class="control-label"></label>
+                    @*<select asp-for="CourseId" class="form-control" asp-items="ViewBag.CourseId"></select>*@
+                    <input asp-for="CourseId" type="hidden" value="@ViewBag.CourseId" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+</body>
+</html>

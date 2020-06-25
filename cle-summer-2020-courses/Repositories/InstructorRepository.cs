@@ -36,6 +36,11 @@ namespace cle_summer_2020_courses.Repositories
             return db.Instructors.Single(c => c.Id == id);
         }
 
+        public bool IsStudentAlreadyEnrolled(int courseId, int studentId)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(Instructor obj)
         {
             throw new NotImplementedException();

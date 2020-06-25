@@ -27,14 +27,12 @@ namespace cle_summer_2020_courses.Controllers
         [HttpPost]
         public ActionResult Create(StudentCourse studentCourse)
         {
-            studentCourseRepo.Create(studentCourse);
-            return RedirectToAction("Index", "Course");
 
-            //if (!studentCourseRepo.IsStudentAlreadyEnrolled(studentCourse.CourseId, studentCourse.StudentId))
-            //{
-            //studentCourseRepo.Create(studentCourse);
-            //}
-            //return RedirectToAction("Index", "Course");
+            if (!studentCourseRepo.IsStudentAlreadyEnrolled(studentCourse.CourseId, studentCourse.StudentId))
+            {
+                studentCourseRepo.Create(studentCourse);
+            }
+            return RedirectToAction("Index", "Course");
         }
 
     }

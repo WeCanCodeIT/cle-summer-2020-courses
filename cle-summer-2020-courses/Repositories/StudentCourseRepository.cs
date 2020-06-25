@@ -37,10 +37,10 @@ namespace cle_summer_2020_courses.Repositories
             return db.StudentCourses.Single(c => c.Id == id);
         }
 
-        //public bool IsStudentAlreadyEnrolled(int courseId, int studentId)
-        //{
-        //    return db.StudentCourses.Any(c => c.CourseId == courseId & c.StudentId == studentId);
-        //}
+        public bool IsStudentAlreadyEnrolled(int courseId, int studentId)
+        {
+            return db.StudentCourses.Any(c => c.CourseId == courseId & c.StudentId == studentId);
+        }
 
         public void Update(StudentCourse obj)
         {

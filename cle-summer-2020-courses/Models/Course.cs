@@ -8,16 +8,18 @@ namespace cle_summer_2020_courses.Models
 {
     public class Course
     {
-        [Required]
+        //[Required]
         public string Name { get; set; }
         public int Id { get; set; }
 
-        [MaxLength(20)]
+        //[MaxLength(20)]
         public string Description { get; set; }
 
-        [Display(Name = "Instructor")]
+        //[Display(Name = "Instructor")]
         public int InstructorId { get; set; }
         public virtual Instructor Instructor { get; set; }
+
+        public virtual List<StudentCourse> StudentCourses { get; set; }
 
 
         public Course()

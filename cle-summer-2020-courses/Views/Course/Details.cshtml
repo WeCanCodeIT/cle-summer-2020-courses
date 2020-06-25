@@ -16,6 +16,14 @@
     <p>Instructor: <a href="/Instructor/Details/@Model.InstructorId">@Model.Instructor.Name</a></p>
     <p>Description: <span>@Model.Description</span></p>
     <hr />
+    <p>Students:</p>
+    <ol>
+        @foreach (var student in Model.StudentCourses)
+        {
+            <li>@student.Student.Name</li>
+        }
+    </ol>
+
     <a href="/Course/Update/@Model.Id">Update Course</a>
     <br />
     <br />

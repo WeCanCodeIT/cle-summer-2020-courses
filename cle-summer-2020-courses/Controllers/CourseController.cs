@@ -35,6 +35,7 @@ namespace cle_summer_2020_courses.Controllers
         [HttpGet]
         public ViewResult Create()
         {
+            ViewBag.InstructorList = courseRepo.PopulateInstructorList();
             return View();
         }
 

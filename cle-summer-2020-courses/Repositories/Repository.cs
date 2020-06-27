@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using cle_summer_2020_courses.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,5 +49,9 @@ namespace cle_summer_2020_courses.Repositories
             throw new NotImplementedException();
         }
 
+        public virtual List<Instructor> PopulateInstructorList()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

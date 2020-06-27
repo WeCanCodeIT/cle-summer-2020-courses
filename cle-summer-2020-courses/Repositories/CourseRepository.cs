@@ -8,8 +8,15 @@ namespace cle_summer_2020_courses.Repositories
 {
     public class CourseRepository : Repository<Course>, IRepository<Course>
     {
+        UniversityContext db; 
         public CourseRepository(UniversityContext db) : base(db)
         {
+            this.db = db;
+        }
+
+        public override List<Instructor> PopulateInstructorList()
+        {
+            return db.Instructors.ToList();
         }
     }
 }

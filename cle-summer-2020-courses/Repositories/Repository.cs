@@ -43,7 +43,7 @@ namespace cle_summer_2020_courses.Repositories
             db.SaveChanges();
         }
 
-        public bool IsStudentAlreadyEnrolled(int courseId, int studentId)
+        public virtual bool IsStudentAlreadyEnrolled(int courseId, int studentId)
         {
             throw new NotImplementedException();
         }
